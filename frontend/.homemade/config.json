@@ -1,0 +1,23 @@
+{
+  "$schema": "https://homemade.dev/schemas/latest/config.json",
+  "warmup": [
+    "bun install --frozen-lockfile --filter frontend"
+  ],
+  "install": [
+    "bun install --frozen-lockfile --filter frontend"
+  ],
+  "services": {
+    "frontend": {
+      "cmd": "bun run dev --host 0.0.0.0 --port \"$PORT\" --strictPort",
+      "port": 5173,
+      "url": true,
+      "healthcheck": {
+        "path": "/login"
+      },
+      "displayName": "Frontend"
+    }
+  },
+  "env_schema": [
+    "VITE_API_URL"
+  ]
+}
